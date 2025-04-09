@@ -1,0 +1,54 @@
+@host = localhost
+@port = {{$dotenv PORT}}
+@hostname = {{host}}:{{port}}
+
+### Send login form
+POST /login/password
+Host: {{hostname}}
+Content-Type: application/application/x-www-form-urlencoded
+
+username=Salla&password=password123
+
+### Register Salla
+POST /register
+Host: {{hostname}}
+Content-Type: application/json
+
+{
+    "username": "Salla",
+    "email": "ac8012@student.jamk.fi",
+    "password": "password123",
+    "passwordConfirm": "password123"
+}
+
+### Register Ville
+POST /register
+Host: {{hostname}}
+Content-Type: application/json
+
+{
+    "name": "ville",
+    "username": "Ville",
+    "email": "ac123@student.jamk.fi",
+    "password": "password456",
+    "passwordConfirm": "password456"
+}
+
+### user creation should fail, username and email already in use
+POST http://{{host}}/users/register
+Content-Type: application/json
+
+{
+    "username": "Salla 2",
+    "email": "ac8012@student.jamk.fi",
+    "password": "password123",
+    "passwordConfirm": "password123"
+}
+
+### Landing page / Profile
+GET /
+Host: {{hostname}}
+
+### Logout
+POST /logout
+Host: {{hostname}}
