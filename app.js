@@ -45,7 +45,7 @@ app.use(passport.session())
 app.use('/', indexRouter)
 app.use('/', authRouter)
 
-app.use('/albums', albums)
+app.use('/api/albums', albums)
 app.use('/users', users)
 
 app.use(notFound)
