@@ -11,7 +11,7 @@ const {authUser, checkOwnership} = authController
 const { getAllAlbums, getAlbumsQuery, getAlbum, createAlbum, updateAlbum, deleteAlbum } = albumsController;
 
 router
-    .get('/', getAllAlbums)     //authUser, removed temporarily since vercel is serverless
+    .get('/', authUser, getAllAlbums)     //authUser, removed temporarily since vercel is serverless
     .get('/', getAlbumsQuery)   //authUser, 
     .post('/', createAlbum)     //authUser, 
 router
